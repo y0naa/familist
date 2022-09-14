@@ -1,7 +1,7 @@
 import 'package:familist/utils/constants.dart';
 import 'package:flutter/material.dart';
 
-import 'login_page.dart';
+import 'pages/login_page.dart';
 
 void main() {
   runApp(const MyApp());

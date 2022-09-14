@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
+import 'center-widget/center_widget.dart';
+
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
 
@@ -34,7 +36,17 @@ class _LoginPageState extends State<LoginPage> {
     return Container(
       width: 1.5 * screenWidth,
       height: 1.5 * screenWidth,
-      decoration: BoxDecoration(),
+      decoration: const BoxDecoration(
+        shape: BoxShape.circle,
+        gradient: LinearGradient(
+          begin: Alignment(0.6, -1.1),
+          end: Alignment(0.7, 0.8),
+          colors: [
+            Color(0XDB4BEBCC),
+            Color(0X005CDBCF),
+          ],
+        ),
+      ),
     );
   }
 
@@ -49,7 +61,12 @@ class _LoginPageState extends State<LoginPage> {
             left: -30,
             child: topWidget(screenSize.width),
           ),
-          bottomWidget(screenSize.width),
+          Positioned(
+            bottom: -18,
+            left: -40,
+            child: bottomWidget(screenSize.width),
+          ),
+          CenterWidget(size: screenSize),
         ],
       ),
     );
