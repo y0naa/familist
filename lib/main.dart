@@ -16,7 +16,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         scaffoldBackgroundColor: kBackgroundColor,
-        textTheme: Theme.of(context).textTheme.apply(bodyColor: kPrimaryColor),
+        textTheme: Theme.of(context)
+            .textTheme
+            .apply(bodyColor: kPrimaryColor, fontFamily: 'Montserrat'),
       ),
       home: const LoginPage(),
     );

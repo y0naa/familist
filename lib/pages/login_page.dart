@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
-import 'center-widget/center_widget.dart';
+import 'components/center-widget/center_widget.dart';
+import 'components/login_content.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -67,6 +68,7 @@ class _LoginPageState extends State<LoginPage> {
             child: bottomWidget(screenSize.width),
           ),
           CenterWidget(size: screenSize),
+          const LoginContent(),
         ],
       ),
     );
