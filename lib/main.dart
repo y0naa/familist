@@ -1,9 +1,16 @@
 import 'package:familist/utils/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'utils/route_generator.dart';
 
-import 'pages/login_page.dart';
+// void main() {
+//   runApp(const MyApp());
+// }
 
-void main() {
+Future main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+
   runApp(const MyApp());
 }
 
@@ -15,12 +22,13 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        scaffoldBackgroundColor: kBackgroundColor,
+        scaffoldBackgroundColor: Colors.white,
         textTheme: Theme.of(context)
             .textTheme
             .apply(bodyColor: kPrimaryColor, fontFamily: 'Montserrat'),
       ),
-      home: const LoginPage(),
+      initialRoute: '/',
+      onGenerateRoute: RouteGenerator.generateRoute,
     );
   }
 }

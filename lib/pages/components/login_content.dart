@@ -1,4 +1,6 @@
 import 'package:familist/pages/components/top_text.dart';
+import 'package:familist/utils/logins/login_service.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
 
@@ -21,9 +23,17 @@ class LoginContent extends StatefulWidget {
 
 class _LoginContentState extends State<LoginContent>
     with TickerProviderStateMixin {
+  // TEXT CONTROLLERS
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+  final usernameController = TextEditingController();
+
+  // LIST OF CONTENTS
   late final List<Widget> createAccountContent;
   late final List<Widget> loginContent;
-  Widget inputField(String hint, IconData iconData) {
+
+  Widget inputField(String hint, IconData iconData,
+      [TextEditingController? controller]) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 36, vertical: 8),
       child: SizedBox(
@@ -34,6 +44,7 @@ class _LoginContentState extends State<LoginContent>
           color: Colors.transparent,
           borderRadius: BorderRadius.circular(30),
           child: TextField(
+            controller: controller,
             textAlignVertical: TextAlignVertical.bottom,
             decoration: InputDecoration(
               border: OutlineInputBorder(
@@ -55,7 +66,8 @@ class _LoginContentState extends State<LoginContent>
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 135, vertical: 16),
       child: ElevatedButton(
-        onPressed: () {},
+        onPressed: () =>
+            signInService(emailController.text, passwordController.text),
         style: ElevatedButton.styleFrom(
           padding: const EdgeInsets.symmetric(vertical: 14),
           shape: const StadiumBorder(),
@@ -140,7 +152,10 @@ class _LoginContentState extends State<LoginContent>
   @override
   void initState() {
     createAccountContent = [
-      inputField('Username', Ionicons.person_outline),
+      inputField(
+        'Username',
+        Ionicons.person_outline,
+      ),
       inputField('Email', Ionicons.mail_outline),
       inputField('Password', Ionicons.lock_closed_outline),
       loginButton('Sign Up'),
@@ -149,11 +164,12 @@ class _LoginContentState extends State<LoginContent>
     ];
 
     loginContent = [
-      inputField('Email', Ionicons.mail_outline),
-      inputField('Password', Ionicons.lock_closed_outline),
+      inputField('Email', Ionicons.mail_outline, emailController),
+      inputField('Password', Ionicons.lock_closed_outline, passwordController),
       loginButton('Login'),
       forgotPassword(),
     ];
+
     ChangeScreenAnimation.initialize(
       vsync: this,
       createAccountItems: createAccountContent.length,
@@ -179,12 +195,14 @@ class _LoginContentState extends State<LoginContent>
   @override
   void dispose() {
     ChangeScreenAnimation.dispose();
+    emailController.dispose();
+    passwordController.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    const currentScreen = Screens.createAccount;
+    // const currentScreen = Screens.createAccount;
     return Stack(
       children: [
         const Positioned(

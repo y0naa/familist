@@ -89,10 +89,7 @@ class ChangeScreenAnimation {
   static void dispose() {
     topTextController.dispose();
     bottomTextController.dispose();
-
     for (final controller in [
-      topTextController,
-      bottomTextController,
       ...createAccountControllers,
       ...loginControllers,
     ]) {
