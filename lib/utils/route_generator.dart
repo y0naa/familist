@@ -6,13 +6,15 @@ import '../pages/login_page.dart';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
-    final args = settings.arguments;
+    //final args = settings.arguments;
 
     switch (settings.name) {
       case '/':
         return MaterialPageRoute(builder: (_) => const SuperPage());
       case '/home':
         return MaterialPageRoute(builder: (_) => const HomePage());
+      case '/login':
+        return MaterialPageRoute(builder: (_) => const LoginPage());
       default:
         return _errorRoute();
     }

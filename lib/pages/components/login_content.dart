@@ -1,6 +1,5 @@
 import 'package:familist/pages/components/top_text.dart';
 import 'package:familist/utils/logins/login_service.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
 
@@ -194,7 +193,6 @@ class _LoginContentState extends State<LoginContent>
 
   @override
   void dispose() {
-    ChangeScreenAnimation.dispose();
     emailController.dispose();
     passwordController.dispose();
     super.dispose();
