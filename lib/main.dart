@@ -1,6 +1,6 @@
-import 'package:familist/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'utils/constants.dart';
 import 'utils/route_generator.dart';
 
 // void main() {
@@ -22,10 +22,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        scaffoldBackgroundColor: Colors.white,
+        scaffoldBackgroundColor: kBackgroundColor,
         textTheme: Theme.of(context)
             .textTheme
-            .apply(bodyColor: kPrimaryColor, fontFamily: 'Montserrat'),
+            .apply(bodyColor: Colors.black87, fontFamily: 'Montserrat'),
       ),
       initialRoute: '/',
       onGenerateRoute: RouteGenerator.generateRoute,

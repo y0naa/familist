@@ -1,5 +1,5 @@
-import 'package:familist/pages/home_page.dart';
 import 'package:familist/pages/super_page.dart';
+import 'package:familist/utils/login_controller.dart';
 import 'package:flutter/material.dart';
 
 import '../pages/login_page.dart';
@@ -10,9 +10,9 @@ class RouteGenerator {
 
     switch (settings.name) {
       case '/':
-        return MaterialPageRoute(builder: (_) => const SuperPage());
+        return MaterialPageRoute(builder: (_) => const LoginController());
       case '/home':
-        return MaterialPageRoute(builder: (_) => const HomePage());
+        return MaterialPageRoute(builder: (_) => const SuperPage());
       case '/login':
         return MaterialPageRoute(builder: (_) => const LoginPage());
       default:

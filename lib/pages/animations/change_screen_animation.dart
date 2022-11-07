@@ -86,7 +86,6 @@ class ChangeScreenAnimation {
     }
   }
 
-
   static Future<void> forward() async {
     isPlaying = true;
     topTextController.forward();

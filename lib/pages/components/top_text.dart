@@ -15,7 +15,7 @@ class _TopTextState extends State<TopText> {
   @override
   void initState() {
     ChangeScreenAnimation.topTextAnimation.addStatusListener((status) {
-      if (status == AnimationStatus.completed) {
+      if (status == AnimationStatus.completed && mounted) {
         setState(() {});
       }
     });
