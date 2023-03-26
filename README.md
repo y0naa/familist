@@ -1,4 +1,4 @@
 # familist
 
-final project ???
+**DEPRECATED, REFER TO FAMILIST 2**
 
